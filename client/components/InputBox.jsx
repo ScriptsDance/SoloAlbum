@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactHtmlParser from 'react-html-parser';
 import { ExcelRenderer, OutTable } from 'react-excel-renderer';
 
 class InputBox extends Component {
