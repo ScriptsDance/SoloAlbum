@@ -4,8 +4,6 @@ import ReactDOM from "react-dom";
 import App from '../App.jsx';
 
 ReactDOM.render(
-  // <BrowserRouter>
-  //   <App />
-  // </BrowserRouter>,
+  <App />,
   document.getElementById("root")
 );
