@@ -1,0 +1,21 @@
+{
+  "name": "soloalbum",
+  "version": "0.0.1",
+  "description": "Allow users to import playlists from various music platforms into Spotify",
+  "main": "./client/src/index.js",
+  "scripts": {
+    "dev": "webpack serve",
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ScriptsDance/SoloAlbum.git"
+  },
+  "author": "Alex Kolb, Kevin HoEun Lee, Tristen Francis, Yang Song",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ScriptsDance/SoloAlbum/issues"
+  },
+  "homepage": "https://github.com/ScriptsDance/SoloAlbum#readme"
+}
