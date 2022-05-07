@@ -10,18 +10,26 @@ module.exports = {
   mode: "production",
   module: {
     rules: [
-      {
+      { 
+        //be able to read react jsx
         test: /\.jsx?/,
-        exclude: /node_modules/,
+        exclude: /(node_modules)/,
         use: {
           loader: "babel-loader",
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
-          }
-        }
+          options: { presets: ["@babel/env", "@babel/preset-react"] },
+        },
       },
-    ]
+      //be able to read scss
+      {
+        test: /\.s[ac]ss$/i,
+        exclude: /(node_modules)/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+        
+      } 
+
+    ] 
   },
+
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "./client/src/index.html"),
