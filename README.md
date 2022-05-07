@@ -1,2 +1,2 @@
 # SoloAlbum
-Automate importing of Playlists across different music platforms
+Automate importing of playlists across different music platforms
