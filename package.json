@@ -17,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/ScriptsDance/SoloAlbum/issues"
   },
-  "homepage": "https://github.com/ScriptsDance/SoloAlbum#readme"
+  "homepage": "https://github.com/ScriptsDance/SoloAlbum#readme",
+  "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.6.4"
+  }
 }
