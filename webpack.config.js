@@ -7,14 +7,17 @@ module.exports = {
     path: path.resolve(__dirname + "/build"),
     filename: 'bundle.js'
   },
-  mode: "development",
+  mode: "production",
   devServer: {
-    static: {
-      directory: path.resolve(__dirname, "/build")
+    proxy: {
+      '/search': 'http://localhost:3000'
     },
+    host:'localhost',
     port: 8080,
-    host: 'localhost',
-    open: true
+    static: {
+      directory: path.resolve(__dirname, '/build'),
+      publicPath: '/build',
+    },
   },
   module: {
     rules: [

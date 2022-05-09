@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SpotifyTrack from './SpotifyTrack';
+import SpotifyTrack from './SpotifyTrack.jsx';
 
 class SpotifyList extends Component {
   render() {
