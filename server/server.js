@@ -4,14 +4,22 @@ const path = require('path');
 
 //please put routers here:
 const searchRouter = require('./routes/search.js');
-
+const playlistRouter = require('./routes/playlist.js');
+const authRounter = require('./routes/auth.js');
 
 app.use(express.json());
 
 app.use('/build', express.static(path.resolve(__dirname, '../build')));
 
+
+//login spotify
+app.use('/auth', authRounter);
+
 //searchRouter is to search tracks info from spotify
 app.use('/search', searchRouter);
+
+//playListRouter is to create playlist and display playlist from spotify
+app.use('/playlist', playlistRouter);
 
 //root rounter is to render html
 app.get('/', (req, res) =>{
