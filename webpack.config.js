@@ -8,6 +8,17 @@ module.exports = {
     filename: 'bundle.js'
   },
   mode: "production",
+  devServer: {
+    proxy: {
+      '/search': 'http://localhost:3000'
+    },
+    host:'localhost',
+    port: 8080,
+    static: {
+      directory: path.resolve(__dirname, '/build'),
+      publicPath: '/build',
+    },
+  },
   module: {
     rules: [
       { 

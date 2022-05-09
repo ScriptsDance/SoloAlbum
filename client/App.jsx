@@ -10,9 +10,10 @@ class App extends Component {
   render() {
     return (
       <div>
+        <main>
         <InputBox/>
-        <ImportButton />
-        <SpotifyList />
+        {/* <SpotifyList/> */}
+        </main>    
       </div>
     )
   }

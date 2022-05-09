@@ -1,45 +1,53 @@
 import React, { Component } from 'react';
-import ReactHtmlParser from 'react-html-parser';
+import { ExcelRenderer, OutTable } from 'react-excel-renderer';
+import ImportButton from './ImportButton.jsx';
 
 class InputBox extends Component {
-  constructor(props){
-    super(props)
-    this.state ={
-      isLoaded : false,
-      tableOutput : ''
+  constructor(props) {
+    super(props);
+    this.state = {
+      cols: [],
+      rows: []
     }
-    this.handleChange = this.handleChange.bind(this);
-  }
-  handleChange(event){
-    const reader = new FileReader();
-    reader.readAsArrayBuffer(event.target.files[0]);
-    reader.onload = (event) => {
-      const data = new Uint8Array(reader.result);;
-      const work_book = XLSX.read(data, {type: 'array'});
-      const sheet_name = work_book.sheetNames;
-      const sheet_data = XLSX.utils.sheet_to_json(work_book.Sheets[sheet_name[0], {header :1}]);
-      if(sheet_data.length > 0){
-        let tb = '<table class = "table table-striped table-bordered"/>';
-        for(let row = 0; row < sheet_data.length; row++){
-          tb += '<tr>';
-          for(let col = 0; col < sheet_data[row].length; col++){
-            tb += sheet_data[row][col] + '</td>';
-          }
-          tb += + '</tr>';
 
-        }
-        this.setState({tableOutput : tb, isLoaded : true});
-      }
-    }
+
+    this.fileHandler = this.fileHandler.bind(this);
   }
-  render(){
-    return(
-      <div>
-      <div class = 'card'>
-        <div class = 'card-header'> <b>Select Excel File</b></div>
-        <div class = 'card-body'><input onChange = {this.handleChange} type="file" id="excel_file" /></div>
-      </div>
-      <div id = 'excel_data' class='mt-5'> {ReactHtmlParser(this.state.tableOutput)}</div>
+
+  fileHandler = (event) => {
+    let fileObj = event.target.files[0];
+
+    //just pass the fileObj as parameter
+    ExcelRenderer(fileObj, (err, resp) => {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        this.setState({
+          cols: resp.cols,
+          rows: resp.rows
+        });
+      }
+    });
+  }
+
+
+  render() {
+    console.log("this.state.cols", this.state.cols);
+    console.log("this.state.rows", this.state.rows);
+    return (
+      <div id="inputAndImport">
+
+        <div class='card' id="inputBoxCard">
+          <div class='card-header'> <b>Select Excel File To Import</b></div>
+          <input type="file" onChange={this.fileHandler} style={{ "padding": "10px" }} />
+          <div > <OutTable class="table" data={this.state.rows} columns={this.state.cols} tableHeaderRowClass="heading" /></div>
+        </div>
+        {/* add import button here because we want to pass the props from inputbox to importbutton */}
+        <div id="importButton">
+          <ImportButton userInputSongs={this.state.rows} />
+        </div>
+
       </div>
     )
   }
