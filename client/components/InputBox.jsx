@@ -7,7 +7,7 @@ class InputBox extends Component {
     super(props);
     this.state = {
       cols: [],
-      rows: []
+      rows: [] //where the song info
     }
 
 
@@ -16,6 +16,8 @@ class InputBox extends Component {
 
   fileHandler = (event) => {
     let fileObj = event.target.files[0];
+    const testObj = {name: 'haha', song: '123'};
+    console.log("testObj: ", testObj);
 
     //just pass the fileObj as parameter
     ExcelRenderer(fileObj, (err, resp) => {
