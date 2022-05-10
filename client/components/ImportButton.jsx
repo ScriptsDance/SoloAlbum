@@ -139,7 +139,7 @@ class ImportButton extends Component {
           <button onClick={this.clickMe}>IMPORT</button>
           <div>
             {/* {"playlist1": [trackobj1, trackobj2], "playlist2" : [trackobj3]} key is the playlist name, value is the array of trackobjects*/}
-            {/* <SpotifyList searchResults={this.state.playListToTracksMap} /> */}
+            <SpotifyList searchResults={this.state.playListToTracksMap} />
           </div>
         </div>
 
