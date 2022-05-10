@@ -73,8 +73,8 @@ class ImportButton extends Component {
     }
     //outside of the for loop, reset the state
     this.setState({searchResults: searchResList});
-
   }
+
   render() {
     return (
       <div>

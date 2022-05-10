@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ImportButton from './ImportButton.jsx';
 import SpotifyTrack from './SpotifyTrack.jsx';
 
 class SpotifyList extends Component {
@@ -14,6 +15,7 @@ class SpotifyList extends Component {
         </span>
       )
     }
+    
     return (
       <div>
         [songs]
