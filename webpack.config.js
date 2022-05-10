@@ -9,9 +9,9 @@ module.exports = {
   },
   mode: "production",
   devServer: {
-    proxy: {
-      '/search': 'http://localhost:3000'
-    },
+    // proxy: {
+    //   '/search': 'http://localhost:3000'
+    // },
     host:'localhost',
     port: 8080,
     static: {

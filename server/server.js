@@ -1,10 +1,14 @@
 const express = require ('express');
 const app = express();
 const path = require('path');
+const querystring = require("querystring");
+
+
 
 //please put routers here:
 const searchRouter = require('./routes/search.js');
-
+const playlistRouter = require('./routes/playlist.js');
+const authRounter = require('./routes/auth.js');
 
 app.use(express.json());
 
@@ -12,6 +16,9 @@ app.use('/build', express.static(path.resolve(__dirname, '../build')));
 
 //searchRouter is to search tracks info from spotify
 app.use('/search', searchRouter);
+
+//playListRouter is to create playlist and display playlist from spotify
+app.use('/playlist', playlistRouter);
 
 //root rounter is to render html
 app.get('/', (req, res) =>{
@@ -31,6 +38,7 @@ app.use((err, req, res, next) => {
   const errorObj = Object.assign(defaultErr, err);
   return res.status(errorObj.status).json(errorObj.messgae);
 })
+
 
 
 app.listen(3000);
