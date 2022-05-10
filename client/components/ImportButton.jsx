@@ -54,7 +54,7 @@ class ImportButton extends Component {
       const artist = songInfo[row][artistIndex].trim();
       const track = songInfo[row][songNameIndex].trim();
       const playListName = songInfo[row][playListIndex].trim();
-      console.log(artist, '+', track, '+', playListName);
+      console.log("User input: ", artist, '+', track, '+', playListName);
       //call node server api - search (await for each loop)
       fetches.push(
         fetch('/search?' + new URLSearchParams({ artist: artist, track: track, type: 'track', limit: 1, }))
@@ -100,12 +100,11 @@ class ImportButton extends Component {
   createPlayList() {
 
     const mp = this.state.playListToTracksMap;
-    console.log("mp is", mp);
+    console.log("Search Result from Spotify: ", mp);
 
     const fetches = [];
     //fetch from node createPlaylist api
     for (let pl in mp) { 
-      console.log("playlist name is:", pl);
       fetches.push(
         fetch('/playlist', {
           method: 'POST',
@@ -117,7 +116,7 @@ class ImportButton extends Component {
         )
           .then((data) => data.json())
           .then((data) => {
-            console.log("in fetch");
+            console.log('create playlist')
           })
           .catch((error) => {
             console.log(error);

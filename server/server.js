@@ -1,6 +1,9 @@
 const express = require ('express');
 const app = express();
 const path = require('path');
+const querystring = require("querystring");
+
+
 
 //please put routers here:
 const searchRouter = require('./routes/search.js');
@@ -10,10 +13,6 @@ const authRounter = require('./routes/auth.js');
 app.use(express.json());
 
 app.use('/build', express.static(path.resolve(__dirname, '../build')));
-
-
-//login spotify
-app.use('/auth', authRounter);
 
 //searchRouter is to search tracks info from spotify
 app.use('/search', searchRouter);
@@ -39,6 +38,7 @@ app.use((err, req, res, next) => {
   const errorObj = Object.assign(defaultErr, err);
   return res.status(errorObj.status).json(errorObj.messgae);
 })
+
 
 
 app.listen(3000);
