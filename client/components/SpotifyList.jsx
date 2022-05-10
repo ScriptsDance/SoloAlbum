@@ -1,32 +1,52 @@
-// import React, { Component } from 'react';
-// import SpotifyTrack from './SpotifyTrack.jsx';
+import React, { Component } from 'react';
 
-// class SpotifyList extends Component {
-//   constructor(props) {
-//     super(props); //get the props from ImportButton (map)
-//     this.state = {
 
-//     }
-//   }
-//   //this.props.searchResult {"playlist1": [trackobj1, trackobj2], "playlist2" : [trackobj3]}
-//   render() {
-//     // const searchRes = this.props.searchResult;
-//     // for(let pl in searchRes){//pl is the playlistname
-//     //   //pl is the playlistname
-//     //   //trakObjArr is the value of the searchResult (trackObjArr)
-//     //   let trackObjArr = searchRes[pl];
-//     //   for(let track of trackObjArr){
-//     //     //track is each song/track obj
-//     //     <tr></tr>
-//     //   }
+class SpotifyList extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    // Spotify API responds JSON to GET request
+    // song represents passed
+    //console.log(this.props || "nothing");
+    const songs = [
+      { song: 'Dancing in the Dark', artist: 'Bruce Springstein', addStatus: true },
+      { song: 'Save Me', artist: 'ZHU', addStatus: true },
+      { song: 'Doing Yoga', artist: 'Kazy Lambist', addStatus: true },
+      { song: 'Dancing in the Dark', artist: 'Bruce Springstein', addStatus: true },
+    ];
+    const songComponents = [];
+    /*
+    { song: 'Dancing in the Dark', artist: 'Bruce Springstein' }
 
-//     }
-//     return (
-//       <div>
-        
-//       </div>
-//     )
-//   }
-// }
 
-// export default SpotifyList;
+    */
+    for (let i = 0; i < songs.length; i++) {
+      songComponents.push(
+        <tr>
+          <td>{songs[i].song}</td>
+          <td>{songs[i].artist}</td>
+          <td>{songs[i].addStatus ? 'added' : 'skipped'}</td>
+        </tr>
+      )
+    }
+    // style="background-color:#1db954"
+    console.log(songComponents);
+    return (
+      <div>
+        <table class="table table-dark">
+          <tbody>
+            <tr class="table-success">
+              <th>Song</th>
+              <th>Artist</th>
+              <th>Status</th>
+            </tr>
+            {songComponents}
+          </tbody>
+        </table>
+      </div>
+    )
+  }
+}
+
+export default SpotifyList;
