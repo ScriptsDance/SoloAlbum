@@ -123,6 +123,12 @@ class ImportButton extends Component {
           })
       )
     }
+<<<<<<< HEAD
+    //outside of the for loop, reset the state
+    this.setState({searchResults: searchResList});
+  }
+
+=======
     Promise.all(fetches)
       .then((data) => {
         console.log("call promise all");
@@ -131,6 +137,7 @@ class ImportButton extends Component {
 
 
   };
+>>>>>>> dev
   render() {
     if (this.state.searchCompleted) {
       console.log(this.state.playListToTracksMap);
